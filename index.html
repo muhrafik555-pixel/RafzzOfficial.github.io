@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Rafzz Injektor</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        utama: '#ff0000',
+                        gelap: '#000000',
+                        abuGelap: '#0f0f0f',
+                        abuSedang: '#1a1a1a',
+                        merahGelap: '#3b0000',
+                    },
+                    fontFamily: {
+                        poppins: ['Poppins', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'nyalaMerah': '0 0 12px #ff0000, 0 0 20px #ff000070',
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .teks-nyala-putih {
+                color: #ffffff;
+                text-shadow: 0 0 8px #fff, 0 0 15px #fff;
+                font-weight: 900;
+            }
+            .teks-nyala-merah {
+                color: #ff0000;
+                text-shadow: 0 0 8px #ff0000, 0 0 15px #ff0000;
+                font-weight: 900;
+            }
+            .tombol-aktif {
+                background: linear-gradient(45deg, #ff0000, #660000);
+                color: white;
+                box-shadow: 0 0 10px #ff000060;
+                border: 1px solid #ff4444;
+            }
+            .tombol-nonaktif {
+                background: #121212;
+                color: #999;
+                border: 1px solid #2a2a2a;
+            }
+            .latar-utama {
+                background: linear-gradient(180deg, #000000 0%, #1c0000 100%);
+            }
+        }
+    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+</head>
+<body class="latar-utama text-white font-poppins min-h-screen overflow-x-hidden">
+
+    <!-- LAYAR PASSWORD -->
+    <div id="layarPassword" class="fixed top-0 left-0 w-full h-full bg-black/97 z-50 flex flex-col items-center justify-center p-4">
+        <div class="w-full max-w-xs bg-abuGelap p-6 rounded-xl border border-utama/70 shadow-nyalaMerah">
+            <div class="text-center mb-6">
+                <h2 class="text-2xl font-extrabold teks-nyala-merah mb-2">VERIFIKASI AKSES</h2>
+                <p class="text-xs text-gray-400">Masukkan Kode Untuk Lanjut</p>
+            </div>
+            
+            <input type="text" id="inputPass" placeholder="Kode Akses..." 
+                class="w-full bg-abuSedang border border-merahGelap rounded-lg px-4 py-3 mb-4 focus:border-utama focus:outline-none">
+            
+            <button onclick="cekPassword()" 
+                class="w-full bg-gradient-to-r from-merahGelap to-utama py-3 rounded-lg font-bold hover:shadow-nyalaMerah transition-all">
+                KONFIRMASI
+            </button>
+
+            <a href="https://whatsapp.com/channel/0029VbDeOPIDp2Q3ixZXPE3b" target="_blank"
+                class="block w-full text-center mt-3 text-sm text-red-400 hover:underline">
+                <i class="fa fa-whatsapp mr-1"></i> JOIN SALURAN JIKA BELUM PUNYA
+            </a>
+        </div>
+    </div>
+
+    <!-- KONTEN UTAMA -->
+    <div id="kontenUtama" class="hidden container mx-auto px-4 py-8 pb-20">
+        
+        <!-- JUDUL -->
+        <div class="text-center mb-10 mt-4">
+            <h1 class="text-[34px] font-black tracking-wider">
+                <span class="teks-nyala-putih">RAFZZ</span> 
+                <span class="teks-nyala-merah">INJEKTOR</span>
+            </h1>
+            <p class="text-red-500 text-xs tracking-widest">TOOL PREMIUM • ANTI BANNED • SAFE</p>
+        </div>
+
+        <!-- BAGIAN FITUR -->
+        <div class="bg-abuGelap rounded-xl p-5 mb-6 border border-red-900/40 shadow-lg">
+            <h3 class="text-lg font-bold text-utama mb-4 flex items-center gap-2">
+                <i class="fa fa-cog fa-spin"></i> FITUR INJEKSI
+            </h3>
+            <div class="grid grid-cols-1 gap-3">
+                
+                <button id="fitur1" onclick="gantiTombol('fitur1')" class="tombol-nonaktif p-3 rounded-lg flex justify-between items-center transition-all">
+                    <span class="font-semibold">Aim Lock Body <span class="text-utama">60%</span></span>
+                    <i class="fa fa-toggle-off text-lg"></i>
+                </button>
+
+                <button id="fitur2" onclick="gantiTombol('fitur2')" class="tombol-nonaktif p-3 rounded-lg flex justify-between items-center transition-all">
+                    <span class="font-semibold">Drag HS <span class="text-utama">60%</span></span>
+                    <i class="fa fa-toggle-off text-lg"></i>
+                </button>
+
+                <button id="fitur3" onclick="gantiTombol('fitur3')" class="tombol-nonaktif p-3 rounded-lg flex justify-between items-center transition-all">
+                    <span class="font-semibold">Stabilizer <span class="text-utama">50%</span></span>
+                    <i class="fa fa-toggle-off text-lg"></i>
+                </button>
+
+                <button id="fitur4" onclick="gantiTombol('fitur4')" class="tombol-nonaktif p-3 rounded-lg flex justify-between items-center transition-all">
+                    <span class="font-semibold">Aim Lock Head <span class="text-utama">40%</span></span>
+                    <i class="fa fa-toggle-off text-lg"></i>
+                </button>
+
+                <!-- TOMBOL BARU: AKTIFKAN BYPASS -->
+                <button id="fitur5" onclick="munculNotifBypass()" class="tombol-nonaktif p-3 rounded-lg flex justify-between items-center transition-all mt-4 border-dashed border-utama">
+                    <span class="font-semibold text-lg">🔥 AKTIFKAN BYPASS</span>
+                    <i class="fa fa-unlock-alt text-lg text-utama"></i>
+                </button>
+
+            </div>
+
+            <div class="mt-5 text-center">
+                <p class="text-sm text-gray-300 mb-2">🔴 <b>Join Saluran</b> jika mau yang lebih GACOR & UPDATE!</p>
+                <a href="https://whatsapp.com/channel/0029VbDeOPIDp2Q3ixZXPE3b" target="_blank"
+                    class="inline-block bg-green-800 hover:bg-green-900 px-4 py-2 rounded-lg text-sm font-bold transition-all border border-green-600/400">
+                    <i class="fa fa-whatsapp mr-1"></i> JOIN SALURAN SEKARANG
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL NOTIFIKASI BYPASS -->
+    <div id="modalBypass" class="fixed top-0 left-0 w-full h-full bg-black/90 z-50 hidden flex items-center justify-center p-4">
+        <div class="w-full max-w-sm bg-abuGelap rounded-xl border border-utama/80 shadow-nyalaMerah p-6 text-center">
+            
+            <i class="fa fa-check-circle text-utama text-5xl mb-3"></i>
+            <h3 class="text-xl font-bold teks-nyala-merah mb-2">BYPASS AKTIF ✅</h3>
+            
+            <p class="text-gray-200 text-sm mb-4 leading-relaxed">
+                Bypass Anti-Berhasil Diaktifkan! <br><br>
+                <b>Join Komunitas Rafzz Official</b> untuk dapatkan banyak Mods Menu Gacor & Gratis Terupdate Setiap Hari!
+            </p>
+
+            <!-- TOMBOL KE SALURAN -->
+            <a href="https://whatsapp.com/channel/0029VbDeOPIDp2Q3ixZXPE3b" target="_blank"
+                class="block w-full bg-green-700 hover:bg-green-800 py-2 rounded-lg font-bold mb-3 transition-all border border-green-500/400">
+                <i class="fa fa-whatsapp mr-2"></i> JOIN KOMUNITAS SEKARANG
+            </a>
+
+            <!-- TOMBOL KEMBALI KE MENU -->
+            <button onclick="tutupModalBypass()" 
+                class="block w-full bg-gray-800 hover:bg-gray-700 py-2 rounded-lg font-bold transition-all">
+                <i class="fa fa-arrow-left mr-2"></i> KEMBALI KE MENU UTAMA
+            </button>
+
+        </div>
+    </div>
+
+
+    <script>
+        const passwordBenar = "join saluran rafzz";
+
+        function cekPassword() {
+            let inputUser = document.getElementById('inputPass').value;
+            if(inputUser.trim().toLowerCase() === passwordBenar.toLowerCase()) {
+                document.getElementById('layarPassword').classList.add('hidden');
+                document.getElementById('kontenUtama').classList.remove('hidden');
+            } else {
+                alert("❌ PASSWORD SALAH!");
+            }
+        }
+
+        // Fungsi fitur nyala mati
+        function gantiTombol(id) {
+            let el = document.getElementById(id);
+            if(el.classList.contains('tombol-nonaktif')) {
+                el.classList.remove('tombol-nonaktif');
+                el.classList.add('tombol-aktif');
+                el.querySelector('i').className = 'fa fa-toggle-on text-lg';
+            } else {
+                el.classList.remove('tombol-aktif');
+                el.classList.add('tombol-nonaktif');
+                el.querySelector('i').className = 'fa fa-toggle-off text-lg';
+            }
+        }
+
+        // Fungsi tombol BYPASS
+        function munculNotifBypass() {
+            // Ubah tombol jadi aktif
+            let el = document.getElementById('fitur5');
+            el.classList.remove('tombol-nonaktif');
+            el.classList.add('tombol-aktif');
+            
+            // Tampilkan notifikasi
+            document.getElementById('modalBypass').classList.remove('hidden');
+            document.getElementById('modalBypass').classList.add('flex');
+        }
+
+        // Tutup notifikasi
+        function tutupModalBypass() {
+            document.getElementById('modalBypass').classList.add('hidden');
+            document.getElementById('modalBypass').classList.remove('flex');
+        }
+    </script>
+
+</body>
+</html>
